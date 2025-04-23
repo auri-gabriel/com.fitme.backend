@@ -1,0 +1,39 @@
+type Query {
+  getAllRestaurants: [Restaurant!]!
+}
+
+type Dish {
+    id: ID!
+    name: String!
+    price: Float!
+    image: String
+    description: String
+}
+
+type Restaurant {
+  id: ID!
+  name: String!
+  rating: Float
+  location: String
+  topDishes: [Dish!]!
+}
+
+input CreateRestaurantInput {
+    name: String!
+    rating: Float
+    location: String
+}
+
+input CreateDishInput {
+    name: String!
+    price: Float!
+    image: String
+    description: String
+    restaurantId: ID!
+}
+
+type Mutation {
+    createRestaurant(input: CreateRestaurantInput!): Restaurant!
+    createDish(input: CreateDishInput!): Dish!
+}
+
