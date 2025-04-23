@@ -1,5 +1,6 @@
 type Query {
   getAllRestaurants: [Restaurant!]!
+  getRestaurant(id: ID!): Restaurant!
 }
 
 type Dish {

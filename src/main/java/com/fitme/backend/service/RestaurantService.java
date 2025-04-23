@@ -27,4 +27,9 @@ public class RestaurantService {
     public Restaurant save(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
+
+    public Restaurant getRestaurantById(Long id) {
+        return restaurantRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Restaurant not found with id: " + id));
+    }
 }

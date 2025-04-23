@@ -39,6 +39,11 @@ public class RestaurantController {
         return restaurantService.save(restaurant);
     }
 
+    @QueryMapping
+    public Restaurant getRestaurant(@Argument Long id) {
+        return restaurantService.getRestaurantById(id);
+    }
+
     @SchemaMapping(typeName = "Restaurant", field = "topDishes")
     public List<Dish> getTopDishes(Restaurant restaurant) {
         return dishService.getByRestaurantId(restaurant.getId());
