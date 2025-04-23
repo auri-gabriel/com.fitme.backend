@@ -16,6 +16,10 @@ type Restaurant {
   name: String!
   rating: Float
   location: String
+  deliveryTime: Int
+  image: String
+  createdAt: String
+  updatedAt: String
   topDishes: [Dish!]!
 }
 

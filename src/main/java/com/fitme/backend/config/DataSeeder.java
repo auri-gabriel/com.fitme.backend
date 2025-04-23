@@ -7,6 +7,7 @@ import com.fitme.backend.repository.RestaurantRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -31,12 +32,20 @@ public class DataSeeder implements CommandLineRunner {
                     .name("Fit Grub")
                     .location("Downtown")
                     .rating(4.5)
+                    .deliveryTime(30)  // Example delivery time in minutes
+                    .image("https://example.com/fitgrub.jpg")  // Example image URL
+                    .createdAt(LocalDateTime.now())  // Set the current time for createdAt
+                    .updatedAt(LocalDateTime.now())  // Set the current time for updatedAt
                     .build();
 
             Restaurant r2 = Restaurant.builder()
                     .name("Healthy Bites")
                     .location("Midtown")
                     .rating(4.2)
+                    .deliveryTime(25)  // Example delivery time in minutes
+                    .image("https://example.com/healthybites.jpg")  // Example image URL
+                    .createdAt(LocalDateTime.now())  // Set the current time for createdAt
+                    .updatedAt(LocalDateTime.now())  // Set the current time for updatedAt
                     .build();
 
             restaurantRepository.saveAll(List.of(r1, r2));
