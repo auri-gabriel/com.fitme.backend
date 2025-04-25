@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
@@ -51,7 +52,23 @@ public class DataSeeder implements CommandLineRunner {
         };
 
         String[] categoryNames = {"Salads", "Wraps", "Bowls"};
-        int dishCounter = 1;
+
+        Map<String, String> dishData = Map.ofEntries(
+                Map.entry("Quinoa Power Bowl", "A nutritious bowl packed with quinoa, veggies, and lean protein."),
+                Map.entry("Avocado Chicken Wrap", "Wrap filled with creamy avocado, grilled chicken, and greens."),
+                Map.entry("Kale Caesar Salad", "A healthy twist on a classic Caesar with fresh kale and parmesan."),
+                Map.entry("Tofu Teriyaki Bowl", "Tofu glazed in teriyaki over a bed of rice and steamed vegetables."),
+                Map.entry("Turkey Spinach Wrap", "A lean and flavorful wrap with turkey, spinach, and hummus."),
+                Map.entry("Chickpea Buddha Bowl", "Chickpeas, brown rice, and roasted veggies for a hearty meal."),
+                Map.entry("Greek Yogurt Salad", "A light salad with Greek yogurt dressing and fresh cucumbers."),
+                Map.entry("Spicy Lentil Wrap", "Lentils, hot spices, and greens wrapped in a whole wheat tortilla."),
+                Map.entry("Sweet Potato Bowl", "Roasted sweet potatoes with kale, beans, and tahini sauce."),
+                Map.entry("Grilled Chicken Caesar", "Grilled chicken served over crispy romaine with Caesar dressing."),
+                Map.entry("Smoky Tempeh Bowl", "Tempeh cubes in a smoky sauce with beans and quinoa.")
+        );
+
+        int dishCounter = 0;
+        List<String> dishNames = new ArrayList<>(dishData.keySet());
 
         for (int i = 0; i < restaurantNames.length; i++) {
             Restaurant restaurant = Restaurant.builder()
@@ -85,15 +102,20 @@ public class DataSeeder implements CommandLineRunner {
 
             for (DishCategory category : categories) {
                 for (int j = 0; j < 2; j++) {
-                    if (dishCounter > 50) break; // Limit to 50 dishes total
+                    if (dishCounter >= dishNames.size()) break;
+
+                    String name = dishNames.get(dishCounter);
+                    String description = dishData.get(name);
+
                     Dish dish = Dish.builder()
-                            .name("Dish " + dishCounter)
+                            .name(name)
+                            .description(description)
                             .price(15.0 + (dishCounter % 10))
-                            .image("https://example.com/dish" + dishCounter + ".jpg")
-                            .description("Tasty and healthy meal #" + dishCounter)
+                            .image("https://example.com/dish" + (dishCounter + 1) + ".jpg")
                             .restaurant(restaurant)
                             .category(category)
                             .build();
+
                     allDishes.add(dish);
                     dishCounter++;
                 }
