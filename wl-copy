@@ -1,0 +1,49 @@
+.
+├── docker-compose.yml
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── fitme
+│   │   │           └── backend
+│   │   │               ├── BackendApplication.java
+│   │   │               ├── config
+│   │   │               │   ├── DataSeeder.java
+│   │   │               │   └── SecurityConfig.java
+│   │   │               ├── controller
+│   │   │               │   ├── DishController.java
+│   │   │               │   └── RestaurantController.java
+│   │   │               ├── dto
+│   │   │               │   ├── CreateDishInput.java
+│   │   │               │   └── CreateRestaurantInput.java
+│   │   │               ├── entity
+│   │   │               │   ├── DishCategory.java
+│   │   │               │   ├── Dish.java
+│   │   │               │   └── Restaurant.java
+│   │   │               ├── graphql
+│   │   │               │   └── resolver
+│   │   │               ├── mapper
+│   │   │               ├── repository
+│   │   │               │   ├── DishRepository.java
+│   │   │               │   └── RestaurantRepository.java
+│   │   │               └── service
+│   │   │                   ├── DishService.java
+│   │   │                   └── RestaurantService.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── graphql
+│   │       │   └── schema.graphqls
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       └── java
+│           └── com
+│               └── fitme
+│                   └── backend
+│                       └── BackendApplicationTests.java
+└── wl-copy
+
+25 directories, 22 files

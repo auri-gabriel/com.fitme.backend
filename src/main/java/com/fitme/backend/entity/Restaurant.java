@@ -34,6 +34,9 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Dish> dishes;
 
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DishCategory> categories;
+
     @PrePersist
     public void onCreate() {
         createdAt = LocalDateTime.now();

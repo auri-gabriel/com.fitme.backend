@@ -1,6 +1,11 @@
 type Query {
-  getAllRestaurants: [Restaurant!]!
-  getRestaurant(id: ID!): Restaurant!
+    getAllRestaurants: [Restaurant!]!
+    getRestaurant(id: ID!): Restaurant!
+}
+
+type DishCategory {
+    id: ID!
+    name: String!
 }
 
 type Dish {
@@ -9,18 +14,20 @@ type Dish {
     price: Float!
     image: String
     description: String
+    category: DishCategory!
 }
 
 type Restaurant {
-  id: ID!
-  name: String!
-  rating: Float
-  location: String
-  deliveryTime: Int
-  image: String
-  createdAt: String
-  updatedAt: String
-  topDishes: [Dish!]!
+    id: ID!
+    name: String!
+    rating: Float
+    location: String
+    deliveryTime: Int
+    image: String
+    createdAt: String
+    updatedAt: String
+    topDishes: [Dish!]!
+    categories: [DishCategory!]!
 }
 
 input CreateRestaurantInput {
@@ -37,8 +44,14 @@ input CreateDishInput {
     restaurantId: ID!
 }
 
+input CreateDishCategoryInput {
+    name: String!
+    restaurantId: ID!
+}
+
 type Mutation {
     createRestaurant(input: CreateRestaurantInput!): Restaurant!
     createDish(input: CreateDishInput!): Dish!
+    createDishCategory(input: CreateDishCategoryInput!): DishCategory
 }
 
