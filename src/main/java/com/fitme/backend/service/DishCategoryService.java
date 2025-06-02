@@ -18,11 +18,11 @@ public class DishCategoryService {
     private final RestaurantRepository restaurantRepository;
 
     public DishCategory create(CreateDishCategoryInput input) {
-        Restaurant restaurant = restaurantRepository.findById(input.getRestaurantId())
+        Restaurant restaurant = restaurantRepository.findById(input.restaurantId())
                 .orElseThrow(() -> new RuntimeException("Restaurant not found"));
 
         DishCategory category = DishCategory.builder()
-                .name(input.getName())
+                .name(input.name())
                 .restaurant(restaurant)
                 .build();
 
